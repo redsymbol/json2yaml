@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+import sys
+import json
+import yaml
+
+if __name__ == '__main__':
+    try:
+        with open(sys.argv[1]) as json_in_file:
+            json_body = json_in_file.read()
+    except IndexError:
+        json_body = sys.stdin.read()
+    print(yaml.dump(json.loads(json_body), default_flow_style=False), end='')
+
